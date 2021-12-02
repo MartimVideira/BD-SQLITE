@@ -32,3 +32,13 @@ WHERE occurred_on BETWEEN "2011-03-01" AND "2011-03-31";
 SELECT occurred_on,magnitude,place FROM earthquake 
 WHERE place LIKE "%Japan%" AND occurred_on BETWEEN "2011-03-09" AND "2011-03-20";
 
+--This works
+SELECT latitude FROM earthquake A 
+WHERE A.latitude <=40 AND A.latitude >= 10;
+
+SELECT latitude FROM earthquake A 
+WHERE A.latitude <=40 AND A.latitude >= 8;
+
+
+--Don't understand why quering for latitudes dont work
+--Trying to   query for values in range   latitude >= 8 AND latitude <= 40 dont work;
