@@ -32,13 +32,18 @@ WHERE occurred_on BETWEEN "2011-03-01" AND "2011-03-31";
 SELECT occurred_on,magnitude,place FROM earthquake 
 WHERE place LIKE "%Japan%" AND occurred_on BETWEEN "2011-03-09" AND "2011-03-20";
 
---This works
-SELECT latitude FROM earthquake A 
-WHERE A.latitude <=40 AND A.latitude >= 10;
+--This works as intended so  now we know that the latitude is being stored as a string ;:C
+--in this method im forcing conversion of string into  float and it works as i intendend
+SELECT latitude  FROM earthquake 
+WHERE (latitude *1) <=40 AND (latitude*1) >= 8
+ORDER BY latitude  DESC;
 
-SELECT latitude FROM earthquake A 
-WHERE A.latitude <=40 AND A.latitude >= 8;
 
+SELECT latitude  FROM earthquake 
+WHERE latitude <="40" AND latitude >="5"
+ORDER BY latitude  DESC;
 
---Don't understand why quering for latitudes dont work
---Trying to   query for values in range   latitude >= 8 AND latitude <= 40 dont work;
+--To alter the data type of the latitude i do something like  but this is no good 
+UPDATE earthquake
+SET latitude = latitude * 1;
+
